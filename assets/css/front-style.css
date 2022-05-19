@@ -1,0 +1,47 @@
+.gclacc-icon-color svg .st1 {
+    fill: #000;
+    opacity: 0.2;
+}
+
+.gclacc-icon-color svg .st2 {
+    fill: #FFFF;
+    transform-origin: center center;
+}
+
+.gclacc-circle-icons .gclacc-icon-color {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.gclhac-user-social-icon {
+    display: none;
+}
+
+.bypostauthor .gclhac-user-social-icon {
+    display: block;
+}
+
+.gclacc-social-html .gclacc-simple-icons a svg,
+.gclacc-social-html .gclacc-circle-icons a svg,
+.gclacc-social-html .gclacc-square-icons a svg {
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 4px;
+}
+
+.gclacc-social-html .gclacc-simple-icons a,
+.gclacc-social-html .gclacc-circle-icons a,
+.gclacc-social-html .gclacc-square-icons a {
+    display: inline-block;
+}
+
+.bypostauthor .comment-author {
+    display: flex;
+}
+
+.bypostauthor .comment-metadata {
+    padding-left: 80px;
+}
