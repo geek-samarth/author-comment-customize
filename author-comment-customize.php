@@ -39,5 +39,3 @@ require_once( GCLACC_PLUGIN_DIR_PATH . 'inc/class-admin-settings.php' );
 require_once( GCLACC_PLUGIN_DIR_PATH . 'inc/class-user-settings.php' );
 require_once( GCLACC_PLUGIN_DIR_PATH . '/customizer/customizer-library/customizer-library.php' );
 require_once( GCLACC_PLUGIN_DIR_PATH . '/customizer/styles.php' );
-
-// new comment add
