@@ -4,7 +4,7 @@
 */
 if (!defined('ABSPATH')) exit;
 
-if(!class_exists('gclacc_admin_settings')){
+if(!class_exists('gclacc_admin_settings')) {
     
     $gclacc_options = get_option('gclacc_comment_box_options');
     $border_styles  = array( "Solid", "Dashed", "Groove", "Outset", "Ridge" );
@@ -58,9 +58,7 @@ if(!class_exists('gclacc_admin_settings')){
                         <?php do_settings_sections('gclacc_author_label_section'); ?>
                     </div>
 
-                    <div class="gclacc-section">
-                        <?php do_settings_sections('gclacc_author_sub_title_section'); ?>
-                    </div>
+                    
 
                     <div class="gclacc-section">
                         <?php do_settings_sections('gclacc_commenter_user_role_section'); ?>
@@ -191,68 +189,25 @@ if(!class_exists('gclacc_admin_settings')){
                     'label_for'     => 'author_label_font_style',
                     'description'   => 'Change the author label font style.'
                 ]
-            );
-    
-            add_settings_section(
-                'gclacc_comment_box_author_sub_title_setting',
-                __('Sub Title Settings', 'author-comment-customize'),
-                array(),
-                'gclacc_author_sub_title_section'
-            );
-    
-            add_settings_field(
-                'author_sub_title',
-                __('Sub Title', 'author-comment-customize'),
-                array($this, 'sub_title_text'),
-                'gclacc_author_sub_title_section',
-                'gclacc_comment_box_author_sub_title_setting',
-                [
-                    'label_for'     => 'author_sub_title',
-                    'description'   => 'Add author sub title in comment.'
-                ]
-            );
-    
-            add_settings_field(
-                'author_sub_title_font_size',
-                __('Font Size', 'author-comment-customize'),
-                array($this, 'font_size'),
-                'gclacc_author_sub_title_section',
-                'gclacc_comment_box_author_sub_title_setting',
-                [
-                    'label_for'     => 'author_sub_title_font_size',
-                    'description'   => 'Change the author sub title font size.'
-                ]
-            );
-    
-            add_settings_field(
-                'author_sub_title_font_color',
-                __('Font color', 'author-comment-customize'),
-                array($this, 'text_color'),
-                'gclacc_author_sub_title_section',
-                'gclacc_comment_box_author_sub_title_setting',
-                [
-                    'label_for'     => 'author_sub_title_font_color',
-                    'description'   => 'Change the author sub title font color.'
-                ]
-            );
-    
-            add_settings_field(
-                'author_sub_title_font_style',
-                __('Font Style', 'author-comment-customize'),
-                array($this, 'select_font_style'),
-                'gclacc_author_sub_title_section',
-                'gclacc_comment_box_author_sub_title_setting',
-                [
-                    'label_for'     => 'author_sub_title_font_style',
-                    'description'   => 'Change the author sub title font style.'
-                ]
-            );
+            );            
             
             add_settings_section(
                 'gclacc_commenter_user_role_setting',
                 __('Commenter user role Settings', 'author-comment-customize'),
                 array(),
                 'gclacc_commenter_user_role_section'
+            );
+
+            add_settings_field(
+                'commenter_user_role_status',
+                __('Status', 'author-comment-customize'),
+                array($this, 'status_checkbox'),
+                'gclacc_commenter_user_role_section',
+                'gclacc_commenter_user_role_setting',
+                [
+                    'label_for'     => 'commenter_user_role_status',
+                    'description'   => 'Change the user role status.'
+                ]
             );
     
             add_settings_field(
@@ -263,7 +218,7 @@ if(!class_exists('gclacc_admin_settings')){
                 'gclacc_commenter_user_role_setting',
                 [
                     'label_for'     => 'commenter_user_role_text_color',
-                    'description'   => 'Change the author sub title font color.'
+                    'description'   => 'Change the user role font color.'
                 ]
             );
     
@@ -275,7 +230,7 @@ if(!class_exists('gclacc_admin_settings')){
                 'gclacc_commenter_user_role_setting',
                 [
                     'label_for'     => 'commenter_user_role_background_color',
-                    'description'   => 'Change the author sub title font color.'
+                    'description'   => 'Change the user role font color.'
                 ]
             );
     
@@ -287,7 +242,7 @@ if(!class_exists('gclacc_admin_settings')){
                 'gclacc_commenter_user_role_setting',
                 [
                     'label_for'     => 'commenter_user_role_border_color',
-                    'description'   => 'Change the author comment box border Style.'
+                    'description'   => 'Change the user role border Style.'
                 ]
             );
     
@@ -299,7 +254,7 @@ if(!class_exists('gclacc_admin_settings')){
                 'gclacc_commenter_user_role_setting',
                 [
                     'label_for'     => 'commenter_user_role_border_style',
-                    'description'   => 'Change the author comment box border Style.'
+                    'description'   => 'Change the user role border Style.'
                 ]
             );            
     
@@ -311,7 +266,7 @@ if(!class_exists('gclacc_admin_settings')){
                 'gclacc_commenter_user_role_setting',
                 [
                     'label_for'     => 'commenter_user_role_border_radius',
-                    'description'   => 'Change the author comment box border Style.'
+                    'description'   => 'Change the user role border Style.'
                 ]
             );
     
@@ -323,7 +278,7 @@ if(!class_exists('gclacc_admin_settings')){
                 'gclacc_commenter_user_role_setting',
                 [
                     'label_for'     => 'commenter_user_role_border_width',
-                    'description'   => 'Change the author comment box border Style.'
+                    'description'   => 'Change the user role border Style.'
                 ]
             );
 
@@ -336,19 +291,19 @@ if(!class_exists('gclacc_admin_settings')){
     
             add_settings_field(
                 'author_social_links',
-                __('Font Style', 'author-comment-customize'),
-                array($this, 'author_social_links'),
+                __('Status', 'author-comment-customize'),
+                array($this, 'status_checkbox'),
                 'gclacc_social_links_section',
                 'gclacc_author_social_links_setting',
                 [
                     'label_for'     => 'author_social_links',
-                    'description'   => 'Add social links in comment box.'
+                    'description'   => 'Enable Status and Go to User Edit Page. Add Social Links.'
                 ]
             );
 
             add_settings_field(
                 'author_social_icons_type',
-                __('Font Style', 'author-comment-customize'),
+                __('Icon Type', 'author-comment-customize'),
                 array($this, 'author_social_icons_type'),
                 'gclacc_social_links_section',
                 'gclacc_author_social_links_setting',
@@ -496,18 +451,7 @@ if(!class_exists('gclacc_admin_settings')){
             <?php
         }
 
-        static function sub_title_text($args) {
-            global $gclacc_options;
-            $value = isset($gclacc_options[$args['label_for']]) ? $gclacc_options[$args['label_for']] : '';
-            ?>
-                <div class="gclacc-feature-field">
-                    <input type="text" class="" name="gclacc_comment_box_options[<?php esc_attr_e( $args['label_for'] ); ?>]" id="<?php esc_attr_e( $args['label_for'] ); ?>" value="<?php _e($value); ?>" >
-                </div>
-                <p class="gclacc-input-note"><?php esc_attr_e($args['description'],'author-comment-customize') ?></p>
-            <?php
-        }
-
-        static function author_social_links($args){
+        static function status_checkbox($args){
             global $gclacc_options;
             $value = isset($gclacc_options[$args['label_for']]) ? $gclacc_options[$args['label_for']] : '';
             ?>  
@@ -571,7 +515,6 @@ if(!class_exists('gclacc_admin_settings')){
 
             // print_r($input); die;
             if (isset($input['comment_box_background_color']) && !empty($input['comment_box_background_color'])) {
-
                 
                 $new_input['comment_box_background_color'] = sanitize_text_field($input['comment_box_background_color']);
             }
@@ -611,24 +554,9 @@ if(!class_exists('gclacc_admin_settings')){
                 $new_input['author_label_font_style'] = sanitize_text_field($input['author_label_font_style']);
             }
 
-            if (isset($input['author_sub_title']) && !empty($input['author_sub_title'])) {
+            if (isset($input['commenter_user_role_status']) && !empty($input['commenter_user_role_status'])) {
 
-                $new_input['author_sub_title'] = sanitize_text_field($input['author_sub_title']);
-            }
-
-            if (isset($input['author_sub_title_font_size']) && !empty($input['author_sub_title_font_size'])) {
-
-                $new_input['author_sub_title_font_size'] = sanitize_text_field($input['author_sub_title_font_size']);
-            }
-
-            if (isset($input['author_sub_title_font_color']) && !empty($input['author_sub_title_font_color'])) {
-
-                $new_input['author_sub_title_font_color'] = sanitize_text_field($input['author_sub_title_font_color']);
-            }
-
-            if (isset($input['author_sub_title_font_style']) && !empty($input['author_sub_title_font_style'])) {
-
-                $new_input['author_sub_title_font_style'] = sanitize_text_field($input['author_sub_title_font_style']);
+                $new_input['commenter_user_role_status'] = sanitize_text_field($input['commenter_user_role_status']);
             }
 
             if (isset($input['commenter_user_role_text_color']) && !empty($input['commenter_user_role_text_color'])) {

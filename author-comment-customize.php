@@ -34,8 +34,8 @@ function gclacc_add_plugin_settings_link( $links ) {
 require_once( GCLACC_PLUGIN_DIR_PATH . 'inc/class-gclacc-helper.php');
 require_once( GCLACC_PLUGIN_DIR_PATH . 'inc/class-author-comment-customize.php');
 require_once( GCLACC_PLUGIN_DIR_PATH . 'inc/class-social-icons.php');
-require_once( GCLACC_PLUGIN_DIR_PATH . 'functions.php');
+// require_once( GCLACC_PLUGIN_DIR_PATH . 'functions.php');
 require_once( GCLACC_PLUGIN_DIR_PATH . 'inc/class-admin-settings.php' );
 require_once( GCLACC_PLUGIN_DIR_PATH . 'inc/class-user-settings.php' );
-require_once( GCLACC_PLUGIN_DIR_PATH .'/customizer/customizer-library/customizer-library.php' );
-require_once( GCLACC_PLUGIN_DIR_PATH .'/customizer/styles.php' );
+require_once( GCLACC_PLUGIN_DIR_PATH . '/customizer/customizer-library/customizer-library.php' );
+require_once( GCLACC_PLUGIN_DIR_PATH . '/customizer/styles.php' );
